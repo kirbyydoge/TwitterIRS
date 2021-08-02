@@ -44,10 +44,6 @@ def scrape_single_card(card):
 	data["reply"] = card.find_element_by_xpath('.//div[@data-testid="reply"]').text
 	data["retweet"] = card.find_element_by_xpath('.//div[@data-testid="retweet"]').text
 	data["like"] = card.find_element_by_xpath('.//div[@data-testid="like"]').text
-	hashtags = re.findall(r"#(\w+)", data["content"])
-	handles = re.findall(r"@(\w+)", data["content"])
-	data["hashtags"] = hashtags
-	data["handles"] = handles
 	return data
 
 def twitter_login(driver:Chrome, username, password):

@@ -23,6 +23,7 @@ def test_create():
 		document = db.get(i)
 		index.add(document)
 
+	db.load(db.path)
 	index.save()
 
 def test_load():
@@ -42,5 +43,7 @@ def test_load():
 		print(f"{tweet['twhandle']} demis ki:\n")
 		print(tweet["content"])
 		print("\n*************")
+
+	print(db.size())
 
 test_load()

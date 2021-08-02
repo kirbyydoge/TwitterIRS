@@ -1,6 +1,7 @@
 import csv
 import nltk
 import string
+import re
 from nltk import text
 from nltk.corpus import stopwords
 from nltk.downloader import update
@@ -21,14 +22,14 @@ def text_preprocess(tweet):
 	for word in text.split():
 		if word not in turkish_stopwords:
 			processed_text += word + " "
-	tweet["content"] = processed_text
+	tweet["processed"] = processed_text
 	tweet["docid"] = id
 	id += 1
 
 def create_tokens(tweet):
 	text_preprocess(tweet)
 	index = {}
-	for word in tweet["content"].split():
+	for word in tweet["processed"].split():
 		if word in index.keys():
 			index[word]["freq"] += 1
 		else:
