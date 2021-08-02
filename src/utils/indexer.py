@@ -1,5 +1,4 @@
 import csv
-from os import read
 import nltk
 import string
 from nltk import text
@@ -50,14 +49,18 @@ def update_index(index, tweet):
 			index[token]["postlist"] = [tokens[token]]
 			index[token]["totalfreq"] = tokens[token]["freq"]
 
-def write_index(index, path):
+def write_index(path, index):
 	with open(path, "w", newline='', encoding="utf-8") as f:
 		writer = csv.writer(f)
 		for key in sorted(index):
 			postlist = index[key]["postlist"]
 			doc_num = len(postlist)
 			total_freq = index[key]["totalfreq"]
-			writer.writerow([key, doc_num, total_freq, [f"{location['docid']}, {location['freq']}" for location in postlist]])
+			entry = [key, doc_num, total_freq]
+			for post in postlist:
+				entry.append(post["docid"])
+				entry.append(post["freq"])
+			writer.writerow(entry)
 
 def load_index(path):	
 	index = {}
@@ -67,7 +70,13 @@ def load_index(path):
 			key = line[0]
 			total_docs = line[1]
 			total_freq = line[2]
-			posting_list = line[3:]
+			posting_list = []
+			it = iter(line[3:])
+			for val in it:
+				posting_list.append({
+					"docid": val,
+					"freq": next(it)
+				})
 			index[key] = {
 				"postinglist": posting_list,
 				"total_docs": total_docs,
@@ -85,7 +94,7 @@ def main():
 	for doc in docs:
 		update_index(main_index, doc)
 	f.close()
-	write_index(main_index, "test_index.csv")
+	write_index("test_index.csv", main_index)
 
 def load_test():
 	index = load_index("test_index.csv")

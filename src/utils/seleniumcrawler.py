@@ -7,7 +7,7 @@ from queue import Queue
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver import Chrome
-import crawlerutils as cru
+import utils.crawlerutils as cru
 
 username = os.environ["TW_USERNAME"]
 password = os.environ["TW_PASSWORD"]
