@@ -2,6 +2,7 @@ from wrappers.database import Database
 from wrappers.invertedindex import InvertedIndex
 from utils import fileutils
 
+
 DATABASE_PATH = "filedumps/initialdb.filedump"
 INDEX_PATH = "indexes/initialidx.index"
 
@@ -38,6 +39,7 @@ def test_load():
 
 	for doc in result["postinglist"]:
 		tweet = db.get(doc["docid"])
+		print (tweet)
 		print("*************")
 		print(f"{tweet['twhandle']} demis ki:\n")
 		print(tweet["content"])
