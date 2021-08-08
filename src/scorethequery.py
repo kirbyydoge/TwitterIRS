@@ -1,6 +1,7 @@
 import math
 from wrappers.database import Database
 from wrappers.invertedindex import InvertedIndex
+from utils.indexer import create_tokens
 
 DATABASE_PATH = "filedumps/initialdb.filedump"
 INDEX_PATH = "indexes/initialidx.index"
@@ -37,7 +38,6 @@ def score_document_for_query(querytext, returnlist):
     
     return returnlist
 
-
 def makeQuery(query):
     returnlist = []
     for token in query.split(' '):
@@ -58,3 +58,8 @@ def addScoreToDocument(docid, score, doclist):
     
     newlist.append({'docid': docid, 'docscore': score})
     return newlist
+
+def pre_process_unigram(query):
+    post_process = query.lower()
+    post_process = post_process.split(" ")
+    return post_process

@@ -11,7 +11,7 @@ hash = "test"
 
 id = 0
 
-def text_preprocess(tweet):
+def text_preprocess(tweet, update_id=True):
 	global id
 	turkish_stopwords = stopwords.words("turkish")
 	text = tweet["content"]
@@ -23,8 +23,9 @@ def text_preprocess(tweet):
 		if word not in turkish_stopwords:
 			processed_text += word + " "
 	tweet["processed"] = processed_text
-	tweet["docid"] = id
-	id += 1
+	if update_id:
+		tweet["docid"] = id
+		id += 1
 
 def create_tokens(tweet):
 	text_preprocess(tweet)
