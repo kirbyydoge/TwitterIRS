@@ -33,6 +33,9 @@ def list_files(path):
 def hashtag_path_list():
 	return list_files("hashtags/latest") + list_files("hashtags/top")
 
+def read_crawled_files():
+	return create_filedump(hashtag_path_list())
+
 if __name__ == "__main__":
 	paths = list_files("hashtags/latest") + list_files("hashtags/top")
 	tweets = create_filedump(paths)

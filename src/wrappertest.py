@@ -6,14 +6,11 @@ from utils import fileutils
 DATABASE_PATH = "filedumps/initialdb.filedump"
 INDEX_PATH = "indexes/initialidx.index"
 
-def read_crawled_files():
-	return fileutils.create_filedump(fileutils.hashtag_path_list())
-
 def test_create():
 	db = Database(DATABASE_PATH)
 	index = InvertedIndex(INDEX_PATH)
 
-	files = read_crawled_files()
+	files = fileutils.read_crawled_files()
 
 	for file in files:
 		db.add(file)
