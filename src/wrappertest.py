@@ -1,11 +1,18 @@
 from wrappers.database import Database
 from wrappers.invertedindex import InvertedIndex
-from utils import fileutils
+from utils import fileutils, scoreutils
 
 import time
 
 DATABASE_PATH = "filedumps/initialdb.filedump"
 INDEX_PATH = "indexes/initialidx.index"
+
+def print_tweet(tweet):
+	print("*************")
+	print(f"{tweet['twhandle']} demis ki:\n")
+	print(tweet["content"])
+	print("\n*************")
+
 
 def test_create():
 	db = Database(DATABASE_PATH)
@@ -38,13 +45,23 @@ def test_load():
 
 	for doc in result["postinglist"]:
 		tweet = db.get(doc["docid"])
-		print (tweet)
-		print("*************")
-		print(f"{tweet['twhandle']} demis ki:\n")
-		print(tweet["content"])
-		print("\n*************")
-
+		print(tweet)
+		print(doc)
+		print_tweet(tweet)
 	print(db.size())
+
+def test_unigram():
+	db = Database(DATABASE_PATH)
+	index = InvertedIndex(INDEX_PATH)
+
+	db.load(DATABASE_PATH)
+	index.load(INDEX_PATH)
+
+	results = scoreutils.score_unigram("uzaya araba göndermek", index, lamb=0.8)
+
+	for docid in results:
+		tweet = db.get(docid)
+		print_tweet(tweet)
 
 if __name__ == "__main__":
 	start = time.time()
@@ -55,3 +72,6 @@ if __name__ == "__main__":
 	test_load()
 	end = time.time()
 	print(f"Index Load and Query took {end - start} ms.")
+	"""
+	test_unigram()
+	"""

@@ -58,8 +58,3 @@ def addScoreToDocument(docid, score, doclist):
     
     newlist.append({'docid': docid, 'docscore': score})
     return newlist
-
-def pre_process_unigram(query):
-    post_process = query.lower()
-    post_process = post_process.split(" ")
-    return post_process

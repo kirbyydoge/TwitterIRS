@@ -25,3 +25,6 @@ class InvertedIndex():
 	def load(self, path):
 		self.path = path
 		self.index = indexer.load_index(path)
+
+	def get_dict(self):
+		return self.index	# DO NOT MODIFY THE INDEX MANUALLY WITH THE RETURNED DICT, USE self.add(document) INSTEAD

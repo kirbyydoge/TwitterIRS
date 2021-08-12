@@ -30,12 +30,14 @@ def text_preprocess(tweet, update_id=True):
 def create_tokens(tweet):
 	text_preprocess(tweet)
 	index = {}
-	for word in tweet["processed"].split():
+	words = tweet["processed"].split()
+	for word in words:
 		if word in index.keys():
 			index[word]["freq"] += 1
 		else:
 			index[word] = {
 				"docid": tweet["docid"],
+				"doclen": len(words),
 				"freq": 1
 			}
 	return index
@@ -44,23 +46,24 @@ def update_index(index, tweet):
 	tokens = create_tokens(tweet)
 	for token in tokens.keys():
 		if token in index:
-			index[token]["postlist"].append(tokens[token])
-			index[token]["totalfreq"] += tokens[token]["freq"]
+			index[token]["postinglist"].append(tokens[token])
+			index[token]["total_freq"] += tokens[token]["freq"]
 		else:
 			index[token] = {}
-			index[token]["postlist"] = [tokens[token]]
-			index[token]["totalfreq"] = tokens[token]["freq"]
+			index[token]["postinglist"] = [tokens[token]]
+			index[token]["total_freq"] = tokens[token]["freq"]
 
 def write_index(path, index):
 	with open(path, "w", newline='', encoding="utf-8") as f:
 		writer = csv.writer(f)
 		for key in sorted(index):
-			postlist = index[key]["postlist"]
+			postlist = index[key]["postinglist"]
 			doc_num = len(postlist)
-			total_freq = index[key]["totalfreq"]
+			total_freq = index[key]["total_freq"]
 			entry = [key, doc_num, total_freq]
 			for post in postlist:
 				entry.append(post["docid"])
+				entry.append(post["doclen"])
 				entry.append(post["freq"])
 			writer.writerow(entry)
 
@@ -77,6 +80,7 @@ def load_index(path):
 			for val in it:
 				posting_list.append({
 					"docid": val,
+					"doclen": next(it),
 					"freq": next(it)
 				})
 			index[key] = {
