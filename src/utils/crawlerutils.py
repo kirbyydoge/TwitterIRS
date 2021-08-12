@@ -9,6 +9,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 
+"""
+Thanks to https://www.youtube.com/watch?v=3KaffTIZ5II for card paths.
+"""
+
 def safe_find(driver, by, query):
 	try:
 		wait = WebDriverWait(driver, 5)

@@ -15,7 +15,9 @@ password = os.environ["TW_PASSWORD"]
 
 driver = Chrome(executable_path='D:/BrowserDrivers/chrome91.exe')
 
-tweets_per_hash = 1000
+tweets_per_hash = 200
+branch_decay = 0.8
+branch_thresh = 10
 
 initial_hashtags = [
 	"#matematik",
@@ -30,8 +32,9 @@ initial_hashtags = [
 ]
 
 hashtags = set(initial_hashtags)
-crawl_branching = False
+crawl_branching = True
 crawl_queue = Queue()
+max_queue = Queue()
 cur_time = datetime.datetime.now()
 cur_time = f"{cur_time.year}_{cur_time.month}_{cur_time.day}_{cur_time.hour}_{cur_time.minute}"
 print(cur_time)
@@ -43,15 +46,17 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
 
 	for hash in hashtags:
 		crawl_queue.put(hash)
+		max_queue.put(tweets_per_hash)
 
 	while not crawl_queue.empty():
 		hash = crawl_queue.get()
-		print(f"Starting crawling {hash}")
+		max_count = max_queue.get()
+		print(f"Starting crawling {hash}. Max tweets {max_count}")
 		# Consumer Producer Setup
 		scrape_queue = Queue()
 		feedback_queue = Queue()
 		tweet_queue = Queue()
-		browser = executor.submit(cru.crawl_hashtag, driver, scrape_queue, feedback_queue, hash, tweets_per_hash, tab=None)
+		browser = executor.submit(cru.crawl_hashtag, driver, scrape_queue, feedback_queue, hash, max_count, tab="Latest")
 		combiner = executor.submit(cru.combine_cards, scrape_queue, feedback_queue, tweet_queue)
 
 		# Result Saving Setup
@@ -69,13 +74,16 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
 				writer = csv.DictWriter(f, keys)
 				writer.writeheader()
 			tweet["hashtags"] = re.findall(r"#(\w+)", tweet["content"])
-			for cur_hash in tweet["hashtags"]:
-				cur_hash = f"#{cur_hash.lower()}"
-				if cur_hash not in hashtags:
-					if crawl_branching:
-						crawl_queue.put(cur_hash)
-					hashtags.add(cur_hash)
-			writer.writerow(tweet)
+			cur_max_tweets = max_count*branch_decay
+			if cur_max_tweets > branch_thresh:
+				for cur_hash in tweet["hashtags"]:
+					cur_hash = f"#{cur_hash.lower()}"
+					if cur_hash not in hashtags:
+						if crawl_branching:
+							crawl_queue.put(cur_hash)
+							max_queue.put(cur_max_tweets)
+						hashtags.add(cur_hash)
+				writer.writerow(tweet)
 
 		# Cleanup
 		print("Cleaning Up.")

@@ -2,6 +2,7 @@ from wrappers.database import Database
 from wrappers.invertedindex import InvertedIndex
 from utils import fileutils
 
+import time
 
 DATABASE_PATH = "filedumps/initialdb.filedump"
 INDEX_PATH = "indexes/initialidx.index"
@@ -45,4 +46,12 @@ def test_load():
 
 	print(db.size())
 
-test_load()
+if __name__ == "__main__":
+	start = time.time()
+	test_create()
+	end = time.time()
+	print(f"Index Creation and Writing took {end - start} ms.")
+	start = time.time()
+	test_load()
+	end = time.time()
+	print(f"Index Load and Query took {end - start} ms.")

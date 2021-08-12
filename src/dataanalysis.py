@@ -31,6 +31,7 @@ def bulk_analysis(tweets):
 		print(f"{hashtag}: {hashtag_data[hashtag]}")
 	print(f"Total Users: {len(user_data)}")
 	print(f"Total Hashtags: {len(hashtag_data)}")
+	print(f"Total Tweets: {len(tweets)}")
 	cur_time = datetime.datetime.now()
 	cur_time = f"{cur_time.year}_{cur_time.month}_{cur_time.day}_{cur_time.hour}"
 	with open(f"dataanalysis/{cur_time}.txt", "w", encoding="utf-8") as f:
@@ -42,6 +43,7 @@ def bulk_analysis(tweets):
 			f.write(f"\t#{hashtag}: {hashtag_data[hashtag]}\n")
 		f.write(f"Total Users: {len(user_data)}\n")
 		f.write(f"Total Hashtags: {len(hashtag_data)}\n")
+		f.write(f"Total Tweets: {len(tweets)}\n")
 		f.flush()
 		f.close()
 
