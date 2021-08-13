@@ -1,15 +1,86 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="input-group container">
+	<select class="form-control search-slt" id="scoringMethod">
+		<option>Unigram Language Model</option>
+		<option>ElasticSearch BM25</option>
+	</select>
 	<input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-		aria-describedby="search-addon" />
-	<button type="button" class="btn btn-outline-primary" name="searchBtn">Search</button>
+		aria-describedby="search-addon" id="searchBox" />
+	<button type="button" class="btn btn-outline-primary" id="searchBtn">Search</button>
+</div>
+<div id="searchResults">
+	<div class="card">
+		<h3>
+			SJ
+		</h3>
+	</div>
 </div>
 <script>
-	function search() {
-		
+	function add_card(tweet) {
+		var results = document.getElementById("searchResults");
+		var like = 0;
+		var reply = 0;
+		var retweet = 0;
+		if(tweet["like"].length > 0) {
+			like = tweet["like"];
+		}
+		if(tweet["reply"].length > 0) {
+			reply = tweet["reply"];
+		}
+		if(tweet["retweet"].length > 0) {
+			retweet = tweet["retweet"];
+		}
+		results.innerHTML += `
+			<div class="card">
+				<a>${tweet["username"]} (@${tweet["twhandle"]})</a>
+				<br>
+				<p>${tweet["content"]}</p>
+				<br>
+				<a>Reply: ${reply} ReTweet: ${retweet} Like: ${like}</a>
+			</div3> 
+		`;
 	}
 
-	$("#searchBtn").on("click", search())
+	function search() {
+		var query = document.getElementById("searchBox").value;
+		var type = document.getElementById("scoringMethod").selectedIndex;
+		console.log(query);
+		console.log(type);
+		switch(type) {
+			case 0: 
+				type = "unigram";
+				break;
+			case 1:
+				type = "elasticbm25";
+				break;
+			default:
+				type = "unigram";
+				break;
+		}
+		var data = {
+			"query": query,
+			"method": type
+		};
+		$.ajax({
+			type: "POST",
+			url: "/search/query",
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8",
+			success: function (data) {
+				document.getElementById("searchResults").innerHTML = "";
+				var tweets = data["tweets"];
+				for(var i = 0; i < tweets.length; i++) {
+					console.log(JSON.parse(tweets[i]));
+					add_card(JSON.parse(tweets[i]));
+				}
+			},
+			error: function () {
+				alert("Fail");
+			}
+		});
+	}
+
+	$("#searchBtn").on("click", search);
 </script>
 {% endblock content %}
