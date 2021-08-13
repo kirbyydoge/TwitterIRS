@@ -1,0 +1,25 @@
+Top 10 Users With Most Tweets:
+	@ulaknews: 806
+	@Haber34I: 629
+	@turkce: 374
+	@SanalKonular: 363
+	@CilginFizikciBi: 272
+	@OlayHaber_Bursa: 253
+	@netyorumnet: 216
+	@BaskentteKarar: 201
+	@teknoloji_org: 176
+	@fsh77: 173
+Top 10 Hashtags With Most Tweets:
+	#sondakika: 3923
+	#oyun: 3509
+	#haber: 3086
+	#teknoloji: 2707
+	#matematik: 2481
+	#ekonomi: 1775
+	#sağlık: 1691
+	#magazin: 1612
+	#uzay: 1519
+	#haberler: 1418
+Total Users: 14979
+Total Hashtags: 35710
+Total Tweets: 34083
