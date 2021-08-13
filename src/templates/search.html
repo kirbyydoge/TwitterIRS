@@ -5,50 +5,59 @@
 		<option>Unigram Language Model</option>
 		<option>ElasticSearch BM25</option>
 	</select>
-	<input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+	<input type="search" class="form-control rounded" placeholder="Topic" aria-label="Search"
+	aria-describedby="search-addon" id="topicBox" />
+	<input type="search" class="form-control rounded" placeholder="Query" aria-label="Search"
 		aria-describedby="search-addon" id="searchBox" />
 	<button type="button" class="btn btn-outline-primary" id="searchBtn">Search</button>
 </div>
 <div id="searchResults">
-	<div class="card">
-		<h3>
-			SJ
-		</h3>
-	</div>
 </div>
 <script>
+	var last_topic = "undefined";
+	var last_query = "undefined";
+	var last_model = "undefined";
+
 	function add_card(tweet) {
 		var results = document.getElementById("searchResults");
 		var like = 0;
 		var reply = 0;
 		var retweet = 0;
-		if(tweet["like"].length > 0) {
+		if (tweet["like"].length > 0) {
 			like = tweet["like"];
 		}
-		if(tweet["reply"].length > 0) {
+		if (tweet["reply"].length > 0) {
 			reply = tweet["reply"];
 		}
-		if(tweet["retweet"].length > 0) {
+		if (tweet["retweet"].length > 0) {
 			retweet = tweet["retweet"];
 		}
 		results.innerHTML += `
-			<div class="card">
-				<a>${tweet["username"]} (@${tweet["twhandle"]})</a>
-				<br>
-				<p>${tweet["content"]}</p>
-				<br>
-				<a>Reply: ${reply} ReTweet: ${retweet} Like: ${like}</a>
-			</div3> 
+			<div class="card text-white bg-primary">
+				<input type="hidden" name="id" value=${tweet["id"]}>
+				<div class="card-header">
+					${tweet["username"]} (@${tweet["twhandle"]})
+				</div>
+				<div class="card-body bg-blue">
+					<p>${tweet["content"]}</p>
+				</div>
+				<div class="card-footer">
+					Reply: ${reply} ReTweet: ${retweet} Like: ${like}
+				</div>
+			</div3>
 		`;
 	}
 
 	function search() {
 		var query = document.getElementById("searchBox").value;
+		var topic = document.getElementById("topicBox").value;
+		last_query = query;
+		last_topic = topic;
 		var type = document.getElementById("scoringMethod").selectedIndex;
 		console.log(query);
 		console.log(type);
-		switch(type) {
-			case 0: 
+		switch (type) {
+			case 0:
 				type = "unigram";
 				break;
 			case 1:
@@ -58,6 +67,7 @@
 				type = "unigram";
 				break;
 		}
+		last_model = type;
 		var data = {
 			"query": query,
 			"method": type
@@ -68,12 +78,51 @@
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=utf-8",
 			success: function (data) {
-				document.getElementById("searchResults").innerHTML = "";
+				document.getElementById("searchResults").innerHTML = `
+					<button type="button" class="btn btn-outline-primary" id="submitBtn">Submit</button>
+				`;
 				var tweets = data["tweets"];
-				for(var i = 0; i < tweets.length; i++) {
+				for (var i = 0; i < tweets.length; i++) {
 					console.log(JSON.parse(tweets[i]));
 					add_card(JSON.parse(tweets[i]));
 				}
+				var cards = document.getElementsByClassName("card");
+				var selectFunc = function () {
+					this.classList.toggle("bg-primary");
+					this.classList.toggle("bg-success");
+					console.log(this);
+				};
+				for (var i = 0; i < cards.length; i++) {
+					cards[i].addEventListener("click", selectFunc, false)
+				}
+				$("#submitBtn").on("click", submit);
+			},
+			error: function () {
+				alert("Fail");
+			}
+		});
+	}
+
+	function submit() {
+		console.log("submit");
+		var cards = document.getElementsByClassName("card bg-success");
+		var relevant = [];
+		for(var i = 0; i < cards.length; i++) {
+			relevant.push(cards[i].children[0].value);
+		}
+		var data = {
+			"topic": last_topic,
+			"query": last_query,
+			"model": last_model,
+			"relevant_ids": relevant
+		};
+		$.ajax({
+			type: "POST",
+			url: "/search/judge",
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8",
+			success: function (data) {
+
 			},
 			error: function () {
 				alert("Fail");

@@ -1,6 +1,6 @@
 from logging import debug
-from flask import Flask, render_template, request, json, jsonify
-from utils import scoreutils
+from flask import Flask, render_template, request, json, jsonify, redirect, url_for
+from utils import scoreutils, fileutils
 from wrappers.database import Database
 from wrappers.invertedindex import InvertedIndex
 import elasticbaseline
@@ -27,6 +27,20 @@ def home():
 def search():
 	return render_template("search.html")
 
+@app.route("/search/judge", methods=["GET", "POST"])
+def search_judge():
+	data = request.get_json()
+	try:
+		topic = data["topic"]
+		query = data["query"]
+		model = data["model"]
+		relevant_ids = data["relevant_ids"]
+		fileutils.save_judgments(topic, relevant_ids, db)
+	except Exception as e:
+		print(e)
+		return jsonify({"success":False})
+	return jsonify({"success":True})
+
 @app.route("/search/query", methods=["GET", "POST"])
 def search_query():
 	data = request.get_json()
@@ -36,18 +50,23 @@ def search_query():
 		method = data["method"]
 		if method == "unigram":
 			result = scoreutils.score_unigram(query, index, lamb=0.8)
+			tweetlist = []
+			for tweetid in result:
+				tweet = db.get(tweetid)
+				tweet["id"] = tweetid
+				tweetlist.append(json.dumps(db.get(tweetid)))
 		elif method == "elasticbm25":
 			result = elasticbaseline.text_to_search(query)
-		if result:
-			result = result[:10]
+			tweetlist = []
+			for entry in result:
+				tweetlist.append(json.dumps(entry["_source"]))
+		if tweetlist:
+			tweetlist = tweetlist[:10]
 		else:
 			return jsonify({"success":False})
 	except Exception as e:
 		print(e)
 		return jsonify({"success":False})
-	tweetlist = []
-	for tweetid in result:
-		tweetlist.append(json.dumps(db.get(tweetid)))
 	return jsonify({"success":True, "tweets":tweetlist})
 
 if __name__ == "__main__":

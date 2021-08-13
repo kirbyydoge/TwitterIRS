@@ -50,14 +50,15 @@ def index():
 		response = requests.post(url, data=json.dumps(tweet), headers=BASE_HEADER)
 	print(f"IDX RESP: {response}")
 
-def search(query, headers):
+def search(query, headers, verbose=False):
 	url = f"{BASE_URL}/{BASE_FOLDER}/_doc/_search"
 	response = requests.get(url, data=json.dumps(query), headers=headers)
 	hits = json.loads(response.text)["hits"]["hits"]
-
-	print("Num\tRelevance Score\tTitle")
-	for idx, hit in enumerate(hits):
-		print(f"{idx+1}\t{hit['_score']}\t{hit['_source']['content']}")
+	if verbose:
+		print("Num\tRelevance Score\tTitle")
+		for idx, hit in enumerate(hits):
+			print(f"{idx+1}\t{hit['_score']}\t{hit['_source']['content']}")
+	return hits
 
 def get_match_query(query):
 	query = {
@@ -79,7 +80,7 @@ def cleanup():
 
 def text_to_search(text):
 	query = get_match_query(text)
-	search(query, BASE_HEADER)
+	return search(query, BASE_HEADER, verbose=False)
 
 """
 Please run setup once before running the queries.
