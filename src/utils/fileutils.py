@@ -2,6 +2,26 @@ import csv
 import os
 import datetime
 
+def fix_filedump(path_list):
+	print(path_list)
+	for path in path_list:
+		print(path)
+		tweets = create_filedump([path])
+		clean_tweets = []
+		for tweet in tweets:
+			clean = {}
+			for key in tweet:
+				if key is None:
+					clean["hashtags"] = tweet[key]
+				else:
+					clean[key] = tweet[key]
+			clean_tweets.append(clean)
+		with open(path, "w", encoding="utf-8") as f:
+			keys = clean_tweets[0].keys()
+			writer = csv.DictWriter(f, keys)
+			writer.writeheader()
+			writer.writerows(clean_tweets)
+
 def create_filedump(path_list):
 	tweets = []
 	for path in path_list:
@@ -28,6 +48,17 @@ def load_filedump(path):
 			tweets.append(line)
 	return tweets
 
+def remove_duplicates_from_filedump(path):
+	tweets = load_filedump(path)
+	clean_tweets = []
+	tweet_hash_set = set()
+	for tweet in tweets:
+		tweet_hash = hash_tweet(tweet)
+		if tweet_hash not in tweet_hash_set:
+			tweet_hash_set.add(tweet_hash)
+			clean_tweets.append(tweet)
+	save_filedump(path, clean_tweets)
+
 def list_files(path):
 	return [os.path.join(path, f) for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))]
 
@@ -37,8 +68,17 @@ def hashtag_path_list():
 def read_crawled_files():
 	return create_filedump(hashtag_path_list())
 
-def judgment_hash(tweet):
-	hash =  ''.join(str(tweet[x]) for x in sorted(tweet))
+def hash_tweet(tweet):
+	try:
+		id = tweet["docid"]
+		tweet["docid"] = 0
+		hash =  ''.join(str(tweet[x]) for x in sorted(tweet))
+		tweet["docid"] = id
+	except:
+		for x in tweet:
+			print(x)
+			print(tweet[x])
+		exit(0)
 	return hash
 
 def load_judgments(topic):
@@ -58,14 +98,14 @@ def save_judgments(topic, relevant_ids, db):
 	if os.path.isfile(f"judgments/{topic}.csv"):
 		judgments = load_judgments(topic)
 		for judgment in judgments:
-			judg_hash = judgment_hash(judgment)
+			judg_hash = hash_tweet(judgment)
 			judg_hashes.add(judg_hash)
 		write_header = False
 	else:
 		write_header = True
 	clean_topics = []
 	for tweet in topic_info:
-		tweet_hash = judgment_hash(tweet)
+		tweet_hash = tweet_hash(tweet)
 		if tweet_hash not in judg_hashes:
 			judg_hashes.add(tweet_hash)
 			clean_topics.append(tweet)
@@ -78,8 +118,4 @@ def save_judgments(topic, relevant_ids, db):
 		f.close()
 
 if __name__ == "__main__":
-	paths = list_files("hashtags/latest") + list_files("hashtags/top")
-	tweets = create_filedump(paths)
-	save_filedump("filedumps/initaldb.filedump", tweets)
-	test = load_filedump("filedumps/initaldb.filedump")
-	print(test == tweets)
+	fix_filedump(hashtag_path_list())

@@ -4,8 +4,9 @@ from utils import fileutils, scoreutils
 
 import time
 
-DATABASE_PATH = "filedumps/initialdb.filedump"
-INDEX_PATH = "indexes/initialidx.index"
+version = 1
+DATABASE_PATH = f"filedumps/db_v{version}.filedump"
+INDEX_PATH = f"indexes/index_v{version}.index"
 
 def print_tweet(tweet):
 	print("*************")
@@ -72,6 +73,3 @@ if __name__ == "__main__":
 	test_load()
 	end = time.time()
 	print(f"Index Load and Query took {end - start} ms.")
-	"""
-	test_unigram()
-	"""

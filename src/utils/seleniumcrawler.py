@@ -67,6 +67,7 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
 		# Result Saving
 		while True:
 			tweet = tweet_queue.get()
+			tweet["hashtags"] = []
 			if not tweet:
 				break
 			if not keys:
