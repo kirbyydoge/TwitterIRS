@@ -40,15 +40,6 @@ def test_load():
 	db.load(DATABASE_PATH)
 	index.load(INDEX_PATH)
 
-	result = index.get("marvel")
-
-	print("Icerisinde 'marvel' gecen tweetler:")
-
-	for doc in result["postinglist"]:
-		tweet = db.get(doc["docid"])
-		print(tweet)
-		print(doc)
-		print_tweet(tweet)
 	print(db.size())
 
 def test_unigram():
@@ -68,8 +59,8 @@ if __name__ == "__main__":
 	start = time.time()
 	test_create()
 	end = time.time()
-	print(f"Index Creation and Writing took {end - start} ms.")
+	print(f"Index Creation and Writing took {end - start} seconds.")
 	start = time.time()
 	test_load()
 	end = time.time()
-	print(f"Index Load and Query took {end - start} ms.")
+	print(f"Index Load and Query took {end - start} seconds.")

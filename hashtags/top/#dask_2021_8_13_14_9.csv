@@ -1,0 +1,161 @@
+username,twhandle,postdate,content,responding,reply,retweet,like,hashtags
+Genevieve Buckley,@DataNerdery,2021-08-10T04:38:53.000Z,"Confused about choosing a good chunk size for #Dask arrays?
+
+Array chunks can't be too big (we'll run out of memory), or too small (the overhead introduced by Dask becomes overwhelming).
+
+So how to get it right? A thread...",,1,40,124,['Dask']
+soloart by jonas,@soloartbyjonas,2021-08-06T23:11:43.000Z,Working on my next #Dask #nftdrop! #love,,,,,"['Dask', 'nftdrop', 'love']"
+soloart by jonas,@soloartbyjonas,2021-08-06T13:15:33.000Z,"It is Friday! #Shoutout to my #collectors.  Check out this amazing people and make sure you follow them.
+@walasavagephoto
+ #Cryptostars
+@prateekdhiman07
+ #Dask
+@akachambo
+  #Dask
+@devinthedude07
+ #Dask
+
+#SharingIsCaring #NFTCommunity #giveback",,,4,8,"['Shoutout', 'collectors', 'Cryptostars', 'Dask', 'Dask', 'Dask', 'SharingIsCaring', 'NFTCommunity', 'giveback']"
+MetroStar,@MetroStarSystem,2021-08-05T17:46:50.000Z,"Calling all #Developers! Strengthen your #python skills by getting to know some of the lesser-known aspects of using the open-source library, #Dask! Register for TONIGHTS PyData DC meetup here","Inside Dask with Julia Signell
+meetup.com",,,2,"['Developers', 'python', 'Dask']"
+Abhishek Choudhary,@Ubunta,2021-08-13T08:25:21.000Z,"Using Dask for #datascience 
+
+Python-Native, extremely fast
+ Advanced Parallelism and massive data processing
+ Real-time Dashboarding
+ Easy access to external libraries
+
+ #bigdata #machinelearning #dataengineering #dask","Abhishek Choudhary on LinkedIn: #datascience #bigdata #machinelearning
+Using Dask for #datascience Python-Native, extremely fast  Advanced Parallelism and massive data processing  Real-time Dashboarding 
+linkedin.com",,2,1,"['datascience', 'bigdata', 'machinelearning', 'dataengineering', 'dask']"
+Urslaan,@Dynamodataguy,2021-08-13T07:15:01.000Z,"Replying to 
+@Dynamodataguy","Also avoid using joins that cause huge explosions of records, which counterintuitively even an inner join can do, if you have repeating join keys. Outer and cross join are a huge culprit. Do these in SQL and return results instead - perhaps in #SQLite or #MySQL.",1,,,[]
+Urslaan,@Dynamodataguy,2021-08-13T07:15:01.000Z,"If all fails, consider #parallelism. Pandas #serial processes data, but you can try #dask or #modin which both do parallelised operations. There are also packages such as #joblib which are useful for parallelism. It can handle #multiprocessing and #threading.",,1,,,"['parallelism', 'serial', 'dask', 'modin', 'joblib', 'multiprocessing', 'threading']"
+Sean Kruzel,@seankruzel,2021-08-12T16:12:56.000Z,"Great piece for those to better understand #dask and some nuances of 'groupby' https://saturncloud.io/docs/reference/dask_groupby_aggregations/…
+  
+@dask_dev","Troubleshooting Dask GroupBy Aggregation Performance | Saturn Cloud
+How to troubleshoot performance issues with Dask GroupBy aggregations with a deep dive into the algorithm
+saturncloud.io",,,,['dask']
+Saturn Cloud,@saturn_cloud,2021-08-12T14:11:28.000Z,"Improve the speed of your hyperparameter search by over 16x by replacing a few lines of your scikit-learn pipeline with Dask code . See how we did it here: https://saturncloud.io/blog/supercharging-hyperparameter-tuning-with-dask/?utm_source=Twitter&utm_medium=hyperparameter+blog&utm_campaign=tweet…
+
+#Dask #DataScience #scikitlearn","Supercharging Hyperparameter Tuning with Dask | Saturn Cloud
+TL;DR: Dask improves scikit-learn parameter search speed by over 16x, and Spark by over 4x. Hyperparameter tuning is a crucial, and often painful, part of building machine learning models. Squeezing...
+saturncloud.io",,,,"['Dask', 'DataScience', 'scikitlearn']"
+Dakbilir,@Dakbilircom,2021-08-10T06:22:36.000Z,"Grafoloji
+Yazı, İmza İnceleme ve Evrakta Sahtecilik Nedir ? Nasıl İncelenmelidir?
+
+#grafoloji #yazı #text #senet #evrak #kalem #iş #business #sigorta #kasko #trafik #dask #kaza #araç #araba  #trafiksigorta #trafik #sigortaacentesi #trafikkazası #işkazas",,,2,7,"['grafoloji', 'yazı', 'text', 'senet', 'evrak', 'kalem', 'iş', 'business', 'sigorta', 'kasko', 'trafik', 'dask', 'kaza', 'araç', 'araba', 'trafiksigorta', 'trafik', 'sigortaacentesi', 'trafikkazası', 'işkazas']"
+İMG Danışmanlık A.Ş,@imghasarcom,2021-08-13T06:56:46.000Z,"Türkiye'nin her yerinde mağduriyetinizi gidermek için yanındayız.
+
+#türkiye #Aktüerya #medikal #tedavi #araç #araba #kamyon #tır #sigorta #kasko #trafik #dask #kaza #araç #araba #trafiksigorta #trafik #sigortaacentesi #trafikkazası #işkazası",,,2,5,"['türkiye', 'Aktüerya', 'medikal', 'tedavi', 'araç', 'araba', 'kamyon', 'tır', 'sigorta', 'kasko', 'trafik', 'dask', 'kaza', 'araç', 'araba', 'trafiksigorta', 'trafik', 'sigortaacentesi', 'trafikkazası', 'işkazası']"
+Dakbilir,@Dakbilircom,2021-08-10T07:03:33.000Z,"Medikal Sakatlık
+
+#medikal #hasta #hastane #doktor #sağlık #trafik #kaza #hız #trafikkazası #dask #kaza #araç #araba  #trafiksigorta #trafik #sigortaacentesi #trafikkazası #işkazası",,,4,11,"['medikal', 'hasta', 'hastane', 'doktor', 'sağlık', 'trafik', 'kaza', 'hız', 'trafikkazası', 'dask', 'kaza', 'araç', 'araba', 'trafiksigorta', 'trafik', 'sigortaacentesi', 'trafikkazası', 'işkazası']"
+haydar karakuş,@haydarkarakus35,2021-08-10T19:27:03.000Z,Depremzedelerin sesine kulak verin #dask #izeda #izmireKulakVerin  şu dask ne işe yarar?,,1,17,43,"['dask', 'izeda', 'izmireKulakVerin']"
+Özdemir şubesi sigorta yelpazesi,@Ozdemirsubesi,2021-08-13T10:26:35.000Z,"Bize sormadan  sigorta yaptırmayınız! En uygun fiyatlarla teklifinizi alınız.
+#kasko #bes #trafik #sigorta #gaziantep #şahinbey #şehitkamil #sağlık #dask #inşaat #ferdikaza #nakliyat #tarım #işyeri #tarım #konut #seyahat #hayat #cepkasko",,,1,2,"['kasko', 'bes', 'trafik', 'sigorta', 'gaziantep', 'şahinbey', 'şehitkamil', 'sağlık', 'dask', 'inşaat', 'ferdikaza', 'nakliyat', 'tarım', 'işyeri', 'tarım', 'konut', 'seyahat', 'hayat', 'cepkasko']"
+Özdemir şubesi sigorta yelpazesi,@Ozdemirsubesi,2021-08-06T09:21:44.000Z,"Bize sormadan  sigorta yaptırmayınız! En uygun fiyatlarla teklifinizi alınız.
+#kasko #bes #trafik #sigorta #gaziantep #şahinbey #şehitkamil #sağlık #dask #inşaat #ferdikaza #nakliyat #tarım #işyeri #tarım #konut #seyahat #cepkasko",,,,,"['kasko', 'bes', 'trafik', 'sigorta', 'gaziantep', 'şahinbey', 'şehitkamil', 'sağlık', 'dask', 'inşaat', 'ferdikaza', 'nakliyat', 'tarım', 'işyeri', 'tarım', 'konut', 'seyahat', 'cepkasko']"
+Dakbilir,@Dakbilircom,2021-08-09T06:28:41.000Z,"Grafoloji
+Yazı, İmza İnceleme ve Evrakta Sahtecilik Nedir ? Nasıl İncelenmelidir?
+
+#grafoloji #yazı #text #senet #evrak #kalem #iş #business #sigorta #kasko #trafik #dask #kaza #araç #araba  #trafiksigorta #trafik #sigortaacentesi #trafikkazası #işkazas",,,2,5,"['grafoloji', 'yazı', 'text', 'senet', 'evrak', 'kalem', 'iş', 'business', 'sigorta', 'kasko', 'trafik', 'dask', 'kaza', 'araç', 'araba', 'trafiksigorta', 'trafik', 'sigortaacentesi', 'trafikkazası', 'işkazas']"
+Sigortacı Sigorta Didim Şubesi,@sigortaci_didim,2021-08-06T06:12:11.000Z,#hayirlicumalar #HayırlıSabahlar #hayırlıcumalar #didim #didimde #sigorta #akbük #altınkum #didyma #mavişehir #söke #sigortacı #aydın #trafiksigortası #kasko #dask,,,,,"['hayirlicumalar', 'HayırlıSabahlar', 'hayırlıcumalar', 'didim', 'didimde', 'sigorta', 'akbük', 'altınkum', 'didyma', 'mavişehir', 'söke', 'sigortacı', 'aydın', 'trafiksigortası', 'kasko', 'dask']"
+İnci Sigorta,@incisigorta,2021-08-10T16:44:27.000Z,"İhtiyaç duyduğunuz her anda İnci Sigorta yanınızda.
+
+0232 425 48 13 
+http://incisigorta.com
+#İnciSigorta #sağlıksigortası #kasko #trafik #sigorta #poliçe #işyeri #konutsigortası #dask #ferdikaza #teminat",,,1,,"['İnciSigorta', 'sağlıksigortası', 'kasko', 'trafik', 'sigorta', 'poliçe', 'işyeri', 'konutsigortası', 'dask', 'ferdikaza', 'teminat']"
+Gülşah Çamur,@glshcamur,2021-08-07T00:13:06.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSQK1IHD5IQ/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Özdemir şubesi sigorta yelpazesi,@Ozdemirsubesi,2021-08-06T07:40:02.000Z,"Bize sormadan  sigorta yaptırmayınız! En uygun fiyatlarla teklifinizi alınız.
+#kasko #bes #trafik #sigorta #gaziantep #şahinbey #şehitkamil #sağlık #dask #inşaat #ferdikaza #nakliyat #tarım #işyeri #tarım #konut #seyahat #cepkasko",,,,,"['kasko', 'bes', 'trafik', 'sigorta', 'gaziantep', 'şahinbey', 'şehitkamil', 'sağlık', 'dask', 'inşaat', 'ferdikaza', 'nakliyat', 'tarım', 'işyeri', 'tarım', 'konut', 'seyahat', 'cepkasko']"
+Gülşah Çamur,@glshcamur,2021-08-07T00:12:10.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSQKub0js2-/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Duygu,@Duygu87663478,2021-08-10T21:11:51.000Z,"#dask ı yıllarca ödedik, hata mı yaptık Anlaşılan yapmışız Az hasarlı raporu verilen evi yıktılar, #dask boya parası verdi çekildi kenara.. Olmayan evin, hangi duvarını boyarız düşüncesiyle acaba Şimdi yanımızda değilsen, ne zaman varsın #dask 
+#İzmireKulakVerin #izdeda",,,,2,"['dask', 'dask', 'dask', 'İzmireKulakVerin', 'izdeda']"
+İMG Danışmanlık A.Ş,@imghasarcom,2021-08-10T06:53:53.000Z,"İMG hizmetlerimiz:
+
+#Aktüerya #medikal #terör #yaralanma #sakatlanma #işkazası #tedavi #araç #araba #kamyon  #tır #sigorta #kasko #trafik #dask #kaza #araç #araba  #trafiksigorta #trafik #sigortaacentesi #trafikkazası #işkazası",,,8,14,"['Aktüerya', 'medikal', 'terör', 'yaralanma', 'sakatlanma', 'işkazası', 'tedavi', 'araç', 'araba', 'kamyon', 'tır', 'sigorta', 'kasko', 'trafik', 'dask', 'kaza', 'araç', 'araba', 'trafiksigorta', 'trafik', 'sigortaacentesi', 'trafikkazası', 'işkazası']"
+Sabri Burak Sarrafi,@sbsarrafi,2021-08-08T10:23:34.000Z,"@herkesicinCHP
+, 
+@iyiparti
+ ve diğer partilerimizin, bu konuda yapılabileceklerin gündeme gelmesi için gerekenleri yapmasını istiyorum. Umarım buna da çomak sokmaz malûm zihniyet...!! #DASK yaşatsın!","Sabri Burak Sarrafi
+@sbsarrafi
+ · Aug 8
+#DASK kapsamında toplanan bütün paralar derhal yangın afetlerinde zarar gören vatandaşlarımız, hatta tüm canlılarımızın normal yaşamlarına kavuşmaları için kullanılsın...!!! Kimseyi borç altına sokmasınlar...!!!",,,,['DASK']
+Özdemir şubesi sigorta yelpazesi,@Ozdemirsubesi,2021-08-06T14:28:57.000Z,"Bize sormadan  sigorta yaptırmayınız! En uygun fiyatlarla teklifinizi alınız.
+#kasko #bes #trafik #sigorta #gaziantep #şahinbey #şehitkamil #sağlık #dask #inşaat #ferdikaza #nakliyat #tarım #işyeri #tarım #konut #seyahat #cepkasko",,,,1,"['kasko', 'bes', 'trafik', 'sigorta', 'gaziantep', 'şahinbey', 'şehitkamil', 'sağlık', 'dask', 'inşaat', 'ferdikaza', 'nakliyat', 'tarım', 'işyeri', 'tarım', 'konut', 'seyahat', 'cepkasko']"
+Gülşah Çamur,@glshcamur,2021-08-07T00:08:48.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSQKVsuDvZa/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+TD Tüketici Dostu,@tdtuketicidostu,2021-08-13T01:29:47.000Z,"https://youtu.be/SfGcz2g5g7Y
+#İZDEDA Dernek Başkanı #HaydarÖzkan:"" #DASK'a hakkımızı helal etmiyoruz""
+Abone olmanızı rica ediyoruz..
+https://youtube.com/channel/UC85WdabAOc0fF3k6F8iiTIg?sub_confirmation=1…
+Firma & Ürün röportajları ve Sponsorluk, Spot & Bant reklam işbirlikleri için de iletişimde bulunabilirsiniz. 
+@haydarozkan90",,,1,1,"['İZDEDA', 'HaydarÖzkan', 'DASK']"
+KONYA SİGORTA,@KonyaSigorta,2021-08-07T16:58:23.000Z,"Riskiniz İçin Konya Sigorta'yı Seçin!
+
+#konya #sigorta #konyasigorta #trafiksigortası #kasko #dask #konutsigortası #depremsigortası #acente #konyadask #ucuzsigorta #uygunsigorta #sigorta
+#enucuzsigorta #araçsigortası #trafik #işyerisigortası #enucuztrafiksigorta #kaskoteklif",,,,,"['konya', 'sigorta', 'konyasigorta', 'trafiksigortası', 'kasko', 'dask', 'konutsigortası', 'depremsigortası', 'acente', 'konyadask', 'ucuzsigorta', 'uygunsigorta', 'sigorta', 'enucuzsigorta', 'araçsigortası', 'trafik', 'işyerisigortası', 'enucuztrafiksigorta', 'kaskoteklif']"
+Özdemir şubesi sigorta yelpazesi,@Ozdemirsubesi,2021-08-05T17:27:41.000Z,"Bize sormadan  sigorta yaptırmayınız! En uygun fiyatlarla teklifinizi alınız.
+#kasko #bes #trafik #sigorta #gaziantep #şahinbey #şehitkamil #sağlık #dask #inşaat #ferdikaza #nakliyat #tarım #işyeri #tarım #konut #seyahat",,,,1,"['kasko', 'bes', 'trafik', 'sigorta', 'gaziantep', 'şahinbey', 'şehitkamil', 'sağlık', 'dask', 'inşaat', 'ferdikaza', 'nakliyat', 'tarım', 'işyeri', 'tarım', 'konut', 'seyahat']"
+Gülşah Çamur,@glshcamur,2021-08-07T00:08:05.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSQKQdKjQl1/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Sigortacı Sigorta Didim Şubesi,@sigortaci_didim,2021-08-12T14:15:01.000Z,"Bizden teklif almadan sigorta yaptırmayınız.
+
+Sigortacı Sigorta Aracılık Hizmetleri Didim Şubesi 
+
+ 0 256 811 00 26
+ 0 506 342 89 48
+
+#didim #didimde #sigorta #akbük #altınkum #didyma #mavişehir #söke #sigortacı #aydın #trafiksigortası #kasko #dask",,,,,"['didim', 'didimde', 'sigorta', 'akbük', 'altınkum', 'didyma', 'mavişehir', 'söke', 'sigortacı', 'aydın', 'trafiksigortası', 'kasko', 'dask']"
+Gülşah Çamur,@glshcamur,2021-08-07T00:04:47.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSQJ4O6jBKn/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Özdemir şubesi sigorta yelpazesi,@Ozdemirsubesi,2021-08-10T06:42:31.000Z,"Bize sormadan  sigorta yaptırmayınız! En uygun fiyatlarla teklifinizi alınız.
+#kasko #bes #trafik #sigorta #gaziantep #şahinbey #şehitkamil #sağlık #dask #inşaat #ferdikaza #nakliyat #tarım #işyeri #tarım #konut #seyahat #cepkasko",,,,,"['kasko', 'bes', 'trafik', 'sigorta', 'gaziantep', 'şahinbey', 'şehitkamil', 'sağlık', 'dask', 'inşaat', 'ferdikaza', 'nakliyat', 'tarım', 'işyeri', 'tarım', 'konut', 'seyahat', 'cepkasko']"
+Sigortacı Sigorta Didim Şubesi,@sigortaci_didim,2021-08-12T13:00:56.000Z,"Sigorta işlemleriniz için en uygun fiyatları bulabileceğiniz adres: Sigortacı Sigorta Didim Şubesi 
+0 506 342 89 48
+0 256 811 00 26
+#didim #didimde #sigorta #akbük #altınkum #didyma #mavişehir #söke #sigortacı #aydın #trafiksigortası #kasko #dask",,,,,"['didim', 'didimde', 'sigorta', 'akbük', 'altınkum', 'didyma', 'mavişehir', 'söke', 'sigortacı', 'aydın', 'trafiksigortası', 'kasko', 'dask']"
+Özdemir şubesi sigorta yelpazesi,@Ozdemirsubesi,2021-08-11T08:34:59.000Z,"Bize sormadan  sigorta yaptırmayınız! En uygun fiyatlarla teklifinizi alınız.
+#kasko #bes #trafik #sigorta #gaziantep #şahinbey #şehitkamil #sağlık #dask #inşaat #ferdikaza #nakliyat #tarım #işyeri #tarım #konut #seyahat #cepkasko",,,,,"['kasko', 'bes', 'trafik', 'sigorta', 'gaziantep', 'şahinbey', 'şehitkamil', 'sağlık', 'dask', 'inşaat', 'ferdikaza', 'nakliyat', 'tarım', 'işyeri', 'tarım', 'konut', 'seyahat', 'cepkasko']"
+Gülşah Çamur,@glshcamur,2021-08-07T00:03:42.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSQJwaDDqps/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Sigortacı Sigorta Didim Şubesi,@sigortaci_didim,2021-08-09T06:55:16.000Z,#didim #didimde #sigorta #akbük #altınkum #didyma #mavişehir #söke #sigortacı #aydın #trafiksigortası #kasko #dask #didim,,,,,"['didim', 'didimde', 'sigorta', 'akbük', 'altınkum', 'didyma', 'mavişehir', 'söke', 'sigortacı', 'aydın', 'trafiksigortası', 'kasko', 'dask', 'didim']"
+KONYA SİGORTA,@KonyaSigorta,2021-08-10T09:05:39.000Z,"Küçük Primlerle Konut Sigortanızı Yaptırmayı Unutmayınız!
+
+#konya #sigorta #konyasigorta #konutsigortası #dask #evsigortası #eşyasigortası",,,1,2,"['konya', 'sigorta', 'konyasigorta', 'konutsigortası', 'dask', 'evsigortası', 'eşyasigortası']"
+Onuncu köyden gelen,@GumusKaan41,2021-08-07T09:33:04.000Z,"@RTErdogan
+ @tcbestepe
+ 
+Büyük Istanbul depremine ne kadar hazırlıklıyız?
+DASKta toplanan paralar nerede kullanılıyor?
+Evinizi sattığınızda DASK policesi niye alıcaya devredilemiyor?
+#dask",,,,,['dask']
+Gülşah Çamur,@glshcamur,2021-08-07T00:06:28.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSQKEjRDR-0/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Sosyal Doğa,@sosyaldogaa,2021-08-05T14:50:09.000Z,"Orman yangınları DASK kapsamında mı? 
+#Ormanlaryanıyor #OrmanYanginlari #antalyAYANIYOR #MuğlaYanıyor #DASK #sigorta #esrahankulu #BugünGünlerdenGALATASARAY #muglayahavadestegi","Orman yangınları DASK kapsamında mı?
+Sigorta Acentesi Sahibi ve Sigorta Danışmanı Refika Er, DASK zorunlu deprem sigortasının orman yangınları nedeniyle oluşabilecek hasarları karşılamadı
+ankaramasasi.com",,,,"['Ormanlaryanıyor', 'OrmanYanginlari', 'antalyAYANIYOR', 'MuğlaYanıyor', 'DASK', 'sigorta', 'esrahankulu', 'BugünGünlerdenGALATASARAY', 'muglayahavadestegi']"
+Gülşah Çamur,@glshcamur,2021-08-07T00:00:16.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSQJXPxDcUz/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Gülşah Çamur,@glshcamur,2021-08-07T00:02:40.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSQJo3Fj0nq/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Gülşah Çamur,@glshcamur,2021-08-07T00:00:51.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSQJbaUDvqY/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Gülşah Çamur,@glshcamur,2021-08-06T23:55:22.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSQIzW1DvIb/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Gülşah Çamur,@glshcamur,2021-08-07T00:01:58.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSQJjrOj8Qt/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Gülşah Çamur,@glshcamur,2021-08-06T22:28:46.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSP-5IYsvil/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Gülşah Çamur,@glshcamur,2021-08-06T22:27:54.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSP-yrksznz/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Gülşah Çamur,@glshcamur,2021-08-06T22:26:24.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSP-nvcMb3T/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Gülşah Çamur,@glshcamur,2021-08-07T00:12:39.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSQKx8CDrE8/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"
+Gülşah Çamur,@glshcamur,2021-08-07T00:09:26.000Z,"#sigorta #acente #guvence #sigortagerekli #sağlıksigortası #sigortaacentesi #konutsigortası #isyerisigortası #dask #trafik #kasko
+#Insurance #insurer #underwriter #insurancebroker @ Bakırköy - İncirli https://instagram.com/p/CSQKaUBjp1h/?utm_medium=twitter…",,,,,"['sigorta', 'acente', 'guvence', 'sigortagerekli', 'sağlıksigortası', 'sigortaacentesi', 'konutsigortası', 'isyerisigortası', 'dask', 'trafik', 'kasko', 'Insurance', 'insurer', 'underwriter', 'insurancebroker']"

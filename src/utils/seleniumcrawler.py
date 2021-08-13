@@ -6,6 +6,7 @@ import concurrent.futures
 import datetime
 from queue import Queue
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver import Chrome
 import crawlerutils as cru
@@ -13,16 +14,18 @@ import crawlerutils as cru
 username = os.environ["TW_USERNAME"]
 password = os.environ["TW_PASSWORD"]
 
-driver = Chrome(executable_path='D:/BrowserDrivers/chrome91.exe')
+opts = Options()
+opts.headless = True
+opts.add_argument("window-size=1200,1100")
 
-tweets_per_hash = 200
-branch_decay = 0.8
-branch_thresh = 10
+driver = Chrome(options=opts, executable_path='D:/BrowserDrivers/chrome91.exe')
+
+tweets_per_hash = 2000
+branch_decay = 0.6
+branch_thresh = 100
 
 initial_hashtags = [
-	"#matematik",
 	"#uzay",
-	"#fizik",
 	"#sağlık",
 	"#sondakika",
 	"#haber",
@@ -30,6 +33,8 @@ initial_hashtags = [
 	"#teknoloji",
 	"#oyun"
 ]
+
+tab = None
 
 hashtags = set(initial_hashtags)
 crawl_branching = True
@@ -56,7 +61,7 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
 		scrape_queue = Queue()
 		feedback_queue = Queue()
 		tweet_queue = Queue()
-		browser = executor.submit(cru.crawl_hashtag, driver, scrape_queue, feedback_queue, hash, max_count, tab="Latest")
+		browser = executor.submit(cru.crawl_hashtag, driver, scrape_queue, feedback_queue, hash, max_count, tab=tab)
 		combiner = executor.submit(cru.combine_cards, scrape_queue, feedback_queue, tweet_queue)
 
 		# Result Saving Setup
@@ -67,14 +72,13 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
 		# Result Saving
 		while True:
 			tweet = tweet_queue.get()
-			tweet["hashtags"] = []
 			if not tweet:
 				break
+			tweet["hashtags"] = re.findall(r"#(\w+)", tweet["content"])
 			if not keys:
 				keys = tweet.keys()
 				writer = csv.DictWriter(f, keys)
 				writer.writeheader()
-			tweet["hashtags"] = re.findall(r"#(\w+)", tweet["content"])
 			cur_max_tweets = max_count*branch_decay
 			if cur_max_tweets > branch_thresh:
 				for cur_hash in tweet["hashtags"]:
