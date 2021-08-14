@@ -48,7 +48,6 @@ def search_judge():
 @app.route("/search/query", methods=["GET", "POST"])
 def search_query():
 	data = request.get_json()
-	print(data)
 	try:
 		query = data["query"]
 		method = data["method"]
@@ -58,8 +57,7 @@ def search_query():
 			result = scoreutils.score_unigram(query, index, lamb=0.8)
 			for tweetid in result:
 				tweet = db.get(tweetid)
-				tweet["id"] = tweetid
-				tweetlist.append(json.dumps(db.get(tweetid)))
+				tweetlist.append(json.dumps(tweet))
 		elif method == "elasticbm25":
 			result = elasticbaseline.text_to_search(query)
 			for entry in result:
@@ -81,6 +79,7 @@ def search_query():
 	except Exception as e:
 		print(e)
 		return jsonify({"success":False})
+	print(tweetlist)
 	return jsonify({"success":True, "tweets":tweetlist})
 
 if __name__ == "__main__":
