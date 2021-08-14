@@ -22,11 +22,11 @@ class Database():
 
 	def safe_get(self, id):
 		document = self.dump[int(id)]
-		if len(document["retweet"]) == 0:
+		if document["retweet"] == "":
 			document["retweet"] = 0
-		if len(document["like"]) == 0:
+		if document["like"] == "":
 			document["like"] = 0
-		if len(document["reply"]) == 0:
+		if document["reply"] == "":
 			document["reply"] = 0
 		return document
 

@@ -39,6 +39,9 @@ NOTE:
     Biraz modifiye etmem gerekti global index ve db yerine bunlari referans olarak kullanmamiz daha duzenli olur API icin.
     Ayrica isimlerin biraz duzensizdi, java stili olan isimleri python/eski c genel kullanimina cevirdim.
 """
+#
+# TFIDF LIKE RETWEET BEGIN
+#
 def single_term_tfidf_scores(querytext, index, db):
     result = index.get(querytext)
     if not result:
@@ -52,21 +55,25 @@ def single_term_tfidf_scores(querytext, index, db):
                           'tfidf': tfidfscore})
     return returnlist
 
-def score_documents_for_query(querytext, index, db, retweet_multiplier = 0.6, like_multiplier = 0.4):
+def score_documents_for_query(querytext, index, db, use_likert, retweet_multiplier, like_multiplier):
     tfidfscores = single_term_tfidf_scores(querytext, index, db)
     returnlist = []
     for element in tfidfscores:
         document = db.safe_get(element['docid'])
         rt = int(document['retweet'])
         like = int(document['like'])
-        documentscore = (above_zero_sigmoid(rt) * retweet_multiplier + above_zero_sigmoid(like) * like_multiplier) * element['tfidf']
+        if use_likert:
+            documentscore = (above_zero_sigmoid(rt) * retweet_multiplier + above_zero_sigmoid(like) * like_multiplier) * element['tfidf']
+        else:
+            documentscore = element['tfidf']
         returnlist = add_score_to_document(element['docid'], documentscore, returnlist)
     return returnlist
     
-def score_query(query, index, db):
+def score_tfidf(query, index, db, use_likert=True, retweet_multiplier = 0.6, like_multiplier = 0.4):
+    query = pre_process_query(query)
     returnlist = []
-    for token in query.split(' '):
-        returnlist += score_documents_for_query(token, index, db)
+    for token in query:
+        returnlist += score_documents_for_query(token, index, db, use_likert, retweet_multiplier, like_multiplier)
     returnlist = sorted(returnlist, key=lambda x: x["docscore"], reverse=True)
     return returnlist
 
@@ -81,3 +88,7 @@ def add_score_to_document(docid, score, doclist):
             return newlist
     newlist.append({'docid': docid, 'docscore': score})
     return newlist
+
+#
+# TFIDF LIKE RETWEET END
+#

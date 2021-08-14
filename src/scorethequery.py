@@ -17,6 +17,6 @@ if __name__ == "__main__":
     db.load(DATABASE_PATH)
     index.load(INDEX_PATH)
 
-    for score in scoreutils.score_query("ucan araba", index, db):
+    for score in scoreutils.score_tfidf_likert("ucan araba", index, db):
         tweet = db.get(score["docid"])
         print_tweet(tweet)

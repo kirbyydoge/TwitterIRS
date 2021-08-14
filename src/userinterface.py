@@ -5,12 +5,14 @@ from wrappers.database import Database
 from wrappers.invertedindex import InvertedIndex
 import elasticbaseline
 import json
+import time
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "9fc5e33cf23b805a512fa86d3ez75b7c"
 
-DATABASE_PATH = "filedumps/initialdb.filedump"
-INDEX_PATH = "indexes/initialidx.index"
+VERSION = 1
+DATABASE_PATH = f"filedumps/db_v{VERSION}.filedump"
+INDEX_PATH = f"indexes/index_v{VERSION}.index"
 
 db = Database(DATABASE_PATH)
 index = InvertedIndex(INDEX_PATH)
@@ -35,7 +37,9 @@ def search_judge():
 		query = data["query"]
 		model = data["model"]
 		relevant_ids = data["relevant_ids"]
-		fileutils.save_judgments(topic, relevant_ids, db)
+		if len(relevant_ids) > 0 and model != "elasticbm25":
+			fileutils.save_judgments(topic, relevant_ids, db)
+		fileutils.save_presicion(query, model, len(relevant_ids))
 	except Exception as e:
 		print(e)
 		return jsonify({"success":False})
@@ -48,19 +52,29 @@ def search_query():
 	try:
 		query = data["query"]
 		method = data["method"]
+		tweetlist = []
+		start = time.time()
 		if method == "unigram":
 			result = scoreutils.score_unigram(query, index, lamb=0.8)
-			tweetlist = []
 			for tweetid in result:
 				tweet = db.get(tweetid)
 				tweet["id"] = tweetid
 				tweetlist.append(json.dumps(db.get(tweetid)))
 		elif method == "elasticbm25":
 			result = elasticbaseline.text_to_search(query)
-			tweetlist = []
 			for entry in result:
 				tweetlist.append(json.dumps(entry["_source"]))
-		if tweetlist:
+		elif method == "tfidf":
+			result = scoreutils.score_tfidf(query, index, db, use_likert=False)
+			for score in result:
+				tweetlist.append(json.dumps(db.get(score["docid"])))
+		elif method == "tfidf_likert":
+			result = scoreutils.score_tfidf(query, index, db, use_likert=True)
+			for score in result:
+				tweetlist.append(json.dumps(db.get(score["docid"])))
+		end = time.time()
+		fileutils.save_speed(query, method, (end-start))
+		if len(tweetlist) > 0:
 			tweetlist = tweetlist[:10]
 		else:
 			return jsonify({"success":False})

@@ -3,6 +3,8 @@
 <div class="input-group container">
 	<select class="form-control search-slt" id="scoringMethod">
 		<option>Unigram Language Model</option>
+		<option>TF-IDF Like/Retweet</option>
+		<option>TF-IDF</option>
 		<option>ElasticSearch BM25</option>
 	</select>
 	<input type="search" class="form-control rounded" placeholder="Topic" aria-label="Search"
@@ -61,6 +63,12 @@
 				type = "unigram";
 				break;
 			case 1:
+				type = "tfidf_likert";
+				break;
+			case 2:
+				type = "tfidf"
+				break;
+			case 3:
 				type = "elasticbm25";
 				break;
 			default:

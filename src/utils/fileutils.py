@@ -76,16 +76,24 @@ def read_crawled_files():
 
 def hash_tweet(tweet):
 	try:
-		id = tweet["docid"]
+		try:
+			id = tweet["docid"]
+		except:
+			id = 0
 		tweet["docid"] = 0
 		hash =  ''.join(str(tweet[x]) for x in sorted(tweet))
 		tweet["docid"] = id
-	except:
-		for x in tweet:
-			print(x)
-			print(tweet[x])
-		exit(0)
+	except Exception as e:
+		print(e)
 	return hash
+
+def load_presicions(model):
+	presicions = []
+	with open(f"modeldata/{model}_patk.csv", "r", encoding="utf-8") as f:
+		reader = csv.reader(f, delimiter=":")
+		for line in reader:
+			presicions.append(line)
+	return presicions
 
 def load_judgments(topic):
 	judgments = []
@@ -111,7 +119,7 @@ def save_judgments(topic, relevant_ids, db):
 		write_header = True
 	clean_topics = []
 	for tweet in topic_info:
-		tweet_hash = tweet_hash(tweet)
+		tweet_hash = hash_tweet(tweet)
 		if tweet_hash not in judg_hashes:
 			judg_hashes.add(tweet_hash)
 			clean_topics.append(tweet)
@@ -122,6 +130,25 @@ def save_judgments(topic, relevant_ids, db):
 			writer.writeheader()
 		writer.writerows(clean_topics)
 		f.close()
+
+def save_speed(query, model, query_time):
+	with open(f"modeldata/{model}_execution.csv", "a", encoding="utf-8") as f:
+		f.write(f"{query}: {query_time} seconds\n")
+		f.close()
+
+def save_presicion(query, model, presicion_at_10):
+	query = query.lower()
+	queries = set()
+	if os.path.isfile(f"modeldata/{model}_patk.csv"):
+		presicions = load_presicions(model)
+		print(presicions)
+		for q, patk in presicions:
+			print(q)
+			queries.add(q.lower())
+	if query not in queries:
+		with open(f"modeldata/{model}_patk.csv", "a", encoding="utf-8") as f:
+			f.write(f"{query}:{presicion_at_10}\n")
+			f.close()
 
 if __name__ == "__main__":
 	fix_filedump(hashtag_path_list())
