@@ -2,6 +2,12 @@ import csv
 import os
 import datetime
 
+def print_tweet(tweet):
+	print("*************")
+	print(f"{tweet['twhandle']} demis ki:\n")
+	print(tweet["content"])
+	print("\n*************")
+
 def fix_filedump(path_list):
 	print(path_list)
 	for path in path_list:

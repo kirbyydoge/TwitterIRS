@@ -20,6 +20,16 @@ class Database():
 	def get(self, id):
 		return self.dump[int(id)]
 
+	def safe_get(self, id):
+		document = self.dump[int(id)]
+		if len(document["retweet"]) == 0:
+			document["retweet"] = 0
+		if len(document["like"]) == 0:
+			document["like"] = 0
+		if len(document["reply"]) == 0:
+			document["reply"] = 0
+		return document
+
 	def size(self):
 		return len(self.dump)
 

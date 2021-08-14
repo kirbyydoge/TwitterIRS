@@ -71,6 +71,7 @@ def get_match_query(query):
 	return query
 
 def setup():
+	cleanup()
 	init()
 	index()
 
@@ -78,9 +79,9 @@ def cleanup():
 	response = requests.delete(f"{BASE_URL}/{BASE_FOLDER}")
 	print(f"DEL RESP: {response}")
 
-def text_to_search(text):
+def text_to_search(text, verbose=False):
 	query = get_match_query(text)
-	return search(query, BASE_HEADER, verbose=False)
+	return search(query, BASE_HEADER, verbose=verbose)
 
 """
 Please run setup once before running the queries.
@@ -89,6 +90,6 @@ You may also cleanup your folder afterwards to save unnecessary space.
 -> I recommend you cleanup once you are done with this index forever, as rebuilding the index has a cost.
 """
 if __name__ == "__main__":
-	#setup()
-	text_to_search("uzayda araba")
+	setup()
+	text_to_search("uzayda araba", verbose=True)
 	#cleanup()

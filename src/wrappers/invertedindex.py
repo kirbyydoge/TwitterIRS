@@ -14,7 +14,10 @@ class InvertedIndex():
 		indexer.update_index(self.index, document)
 
 	def get(self, key):
-		return self.index[key]
+		try:
+			return self.index[key]
+		except:
+			return None
 
 	def size(self):
 		return len(self.index.keys())
