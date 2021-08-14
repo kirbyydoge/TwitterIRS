@@ -92,3 +92,57 @@ def add_score_to_document(docid, score, doclist):
 #
 # TFIDF LIKE RETWEET END
 #
+
+#UNWEIGHTED COSINE SCORE (?)
+def score_documents_uwcos(token, index, db, returnlist):
+    result = index.get(token)
+    if result:
+        newlist = []
+        for element in result['postinglist']:
+            tfscore = float(element['freq'])
+            documentscoreforquery = tfscore / float(element["doclen"])
+            newlist.append({'docid': element['docid'],
+                            'cosinescore': documentscoreforquery})
+            returnlist = add_score_to_document_cosine(element['docid'], documentscoreforquery, returnlist, db)
+    return returnlist
+
+def score_query_unweighted_cosine(query, index, db):
+    returnlist = []
+    for token in query.split(' '):
+        returnlist += score_documents_uwcos(token, index, db, returnlist)
+    returnlist = sorted(returnlist, key=lambda x: x["cosinescore"], reverse=True)
+    return returnlist
+
+#
+# HELPER FUNCTIONS BEGIN
+#
+
+def above_zero_sigmoid(x):
+  return (((1 / (1 + math.exp(-x))) - 0.5) * 2)
+
+def add_score_to_document(docid, score, doclist):
+    newlist = doclist
+    for element in newlist:
+        if element['docid'] == docid:
+            element['docscore'] = element['docscore'] + score
+            return newlist
+    newlist.append({'docid': docid, 'docscore': score})
+    return newlist
+
+def add_score_to_document_cosine(docid, score, doclist, db):
+    newlist = doclist
+    for element in newlist:
+        if element['docid'] == docid:
+            element['cosinescore'] = element['cosinescore'] + score/2
+            return newlist
+    document = db.safe_get(element['docid'])
+    rt = int(document['retweet'])
+    like = int(document['like'])
+    totalrtlikescore = above_zero_sigmoid(rt+like)
+    newlist.append({'docid': docid, 'cosinescore': score/2 + totalrtlikescore/2})
+
+    return newlist
+
+#
+# HELPER FUNCTIONS END
+#
