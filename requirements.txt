@@ -1,0 +1,5 @@
+Flask==1.1.2
+selenium==3.141.0
+elasticsearch==7.14.0
+requests==2.24.0
+nltk==3.5
