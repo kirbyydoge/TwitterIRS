@@ -15,13 +15,13 @@ username = os.environ["TW_USERNAME"]
 password = os.environ["TW_PASSWORD"]
 
 opts = Options()
-opts.headless = True
-opts.add_argument("window-size=1200,1100")
+#opts.headless = True
+#opts.add_argument("window-size=1200,1100")
 
 driver = Chrome(options=opts, executable_path='D:/BrowserDrivers/chrome91.exe')
 
-tweets_per_hash = 2000
-branch_decay = 0.6
+tweets_per_hash = 1000
+branch_decay = 0.1
 branch_thresh = 100
 
 initial_hashtags = [

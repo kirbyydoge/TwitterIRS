@@ -1,0 +1,7 @@
+flask
+selenium
+elasticsearch
+nltk
+
+=========
+setup.py dosyası indexleri oluşturmaktadır

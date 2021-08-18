@@ -18,6 +18,8 @@ def test_create():
 	for file in files:
 		db.add(file)
 
+	print(db.dupes)
+
 	db.save()
 
 	for i in range(db.size()):

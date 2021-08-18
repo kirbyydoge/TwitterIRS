@@ -10,9 +10,9 @@ import time
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "9fc5e33cf23b805a512fa86d3ez75b7c"
 
-VERSION = 1
-DATABASE_PATH = f"filedumps/db_v{VERSION}.filedump"
-INDEX_PATH = f"indexes/index_v{VERSION}.index"
+version = 1
+DATABASE_PATH = f"filedumps/db_v{version}.filedump"
+INDEX_PATH = f"indexes/index_v{version}.index"
 
 db = Database(DATABASE_PATH)
 index = InvertedIndex(INDEX_PATH)
@@ -79,7 +79,6 @@ def search_query():
 	except Exception as e:
 		print(e)
 		return jsonify({"success":False})
-	print(tweetlist)
 	return jsonify({"success":True, "tweets":tweetlist})
 
 if __name__ == "__main__":

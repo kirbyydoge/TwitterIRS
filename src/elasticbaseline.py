@@ -3,6 +3,7 @@ import json
 from elasticsearch import Elasticsearch
 from utils import fileutils
 
+import time
 
 """
 Thanks to Mr./Mrs. Ethen8181 for the valuable guide on how to start with Elasticsearch
@@ -46,8 +47,12 @@ def init():
 def index():
 	url = f"{BASE_URL}/{BASE_FOLDER}/_doc"
 	tweets = fileutils.read_crawled_files()
+	tweet_hashes = set()
 	for tweet in tweets:
-		response = requests.post(url, data=json.dumps(tweet), headers=BASE_HEADER)
+		tw_hash = tweet["content"]
+		if tw_hash not in tweet_hashes:
+			tweet_hashes.add(tw_hash)
+			response = requests.post(url, data=json.dumps(tweet), headers=BASE_HEADER)
 	print(f"IDX RESP: {response}")
 
 def search(query, headers, verbose=False):
@@ -72,8 +77,11 @@ def get_match_query(query):
 
 def setup():
 	cleanup()
+	#start = time.time()
 	init()
 	index()
+	#end = time.time()
+	#print(end-start)
 
 def cleanup():
 	response = requests.delete(f"{BASE_URL}/{BASE_FOLDER}")
@@ -91,5 +99,5 @@ You may also cleanup your folder afterwards to save unnecessary space.
 """
 if __name__ == "__main__":
 	setup()
-	text_to_search("uzayda araba", verbose=True)
+	#text_to_search("uzayda araba", verbose=True)
 	#cleanup()

@@ -8,14 +8,17 @@ class Database():
 	def __init__(self, path):
 		self.path = path
 		self.hash = set()
+		self.dupes = 0
 		self.dump = []
 
 	def add(self, tweet):
 		tweet["docid"] = self.size()
-		cur_hash = fu.hash_tweet(tweet)
+		cur_hash = tweet["content"]
 		if cur_hash not in self.hash:
 			self.dump.append(tweet)
 			self.hash.add(cur_hash)
+		else:
+			self.dupes += 1
 
 	def get(self, id):
 		return self.dump[int(id)]
